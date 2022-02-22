@@ -1,0 +1,67 @@
+link de video: https://www.youtube.com/watch?v=lxYB79ANJM8&t=230s
+git: https://github.com/FaztWeb/angular7-mysql-crud
+# para instalar 
+en server: 
+.) npm init 
+.) npm i express morgan promise-mysql cors
+    // cors me permiete abrir 2 servideores tanto para angular y nodejs
+.) npm i --save-dev @types/express
+.) npm i -g  typescript
+.) tsc --init 
+    //luego en src añadir un index.ts para generar el modulo buils( es la q va leer el servidor del proyecto)
+    para finalizar ingresar a ts.config.json y añadir o habiliar  "outDir": "./build" q sera la ruta de produccion
+.) tsc      //con este comando se genera un .js del a carpeta scr. para generar cambios aplicar tsc cada q se necesite actualizar.
+    -package.json
+        "scripts": {
+            "build": "tsc -w"
+        },
+    luego ejecutar: npm run build
+    se añade ente comando para q vigile los cambios q se hace en timepo real se actualice en build automaticamnte.
+    y para probarlo ejecutar: npm run build
+.) npm i nodemon -D    // es una dependencia de dessarrollo y no una dependencia de produccion( express, typescript, tsc..)
+    tambien es una utilidad que monitorea los cambios en el código fuente que se esta desarrollando y automáticamente re inicia el servidor
+    añadir el siguinete ruta
+     -package.json
+        "scripts": {
+            "dev": "nodemon build/index.js"
+        },
+    luego ejecutar: npm run dev
+obs: para verlo los cambios en timepo real ejecutar: 
+    *********** npm run build y  npm run dev ************************
+
+para exportar modulos de dependencias, usar el sig  comand:
+    npm i @types/express -D
+    por ejemplo esto se puede usar: import express, {Application} from 'express'
+    al igual  se debe hacer para las otras dependencias y por des usarla atraves del import
+        npm i @types/morgan @types/cors -D
+    la opcion -D es para añadir a la dependecia de  devDependencies
+        "devDependencies": {
+            "@types/cors": "^2.8.10",
+            "@types/express": "^4.17.11",
+            "@types/morgan": "^1.9.2",
+            "nodemon": "^2.0.7"
+        }
+
+instalar el postman en linux: 
+    para hacer solicitudes del tipo :
+    post: usando la url : http://localhost:3200/api/games/
+        body
+            raw: excribe la peticon sql
+            ej: {
+                    "title":"cards",
+                    "descripcion":"juego de coche carreras",
+                    "imagen": "url img cards"
+                }
+            elegir del tipo JSON
+    get: url http://localhost:3200/api/games/
+    get: url http://localhost:3200/api/games/1
+
+
+iniciar msql :
+*********************  sudo /opt/lampp/manager-linux-x64.run  *************
+
+package.json:
+    "start": "tsc && node build/index.js ": ejecuta el build y copila JS lebantando el servidor
+    "build": "tsc -w", : ejecuta el el build y actualiza cada cuando se haga cambios en el .TS
+    "devps": " ts-node-dev --clear 'src/index.ts'",: lebanta el servidor en TS muestra en tiempo real la ejecucion  
+    "dev": "nodemon build/index.js" lo mismo que en devps solo que con JS
