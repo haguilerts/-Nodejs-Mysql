@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "tsc && node build/index.js ",
-        "build": "tsc && node build/index.js",
+        "build": "tsc",
         "devps": "ts-node-dev --clear 'src/index.ts'",
         "dev": "nodemon build/index.js"
     },
