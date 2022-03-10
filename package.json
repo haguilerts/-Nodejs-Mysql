@@ -2,7 +2,7 @@
     "name": "server",
     "version": "1.0.0",
     "description": "nodejs, Angular, Mysql",
-    "main": "index.js",
+    "main": "build/index.js",
     "scripts": {
         "start": "tsc && node build/index.js ",
         "build": "tsc",
